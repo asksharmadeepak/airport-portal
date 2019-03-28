@@ -1,0 +1,27 @@
+<div id="resultTrace">
+  <table class="table table-dark">
+    <thead>
+    <tr>
+      <th scope="col">Total Number Of Request</th>
+      <th scope="col">Total Number Of 200 Request</th>
+      <th scope="col">Total Number Of 400 Request</th>
+      <th scope="col">Total Number Of 500 Request</th>
+      <th scope="col">Average Response Time Request</th>
+      <th scope="col">Min Response Time Request</th>
+      <th scope="col">Max Response Time Request</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td>{{httpTrace.totalNumberOfRequest}}</td>
+      <td>{{httpTrace.totalNumberOfOkRequest}}</td>
+      <td>{{httpTrace.totalNumberOfNotFoundRequest}}</td>
+      <td>{{httpTrace.totalNumberOfServerErrorRequest}}</td>
+      <td>{{httpTrace.averageResponseTimeRequest}}</td>
+      <td>{{httpTrace.minResponseTimeRequest}}</td>
+      <td>{{httpTrace.maxResponseTimeRequest}}</td>
+    </tr>
+    </tbody>
+  </table>
+
+</div>

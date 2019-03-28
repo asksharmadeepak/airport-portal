@@ -1,0 +1,90 @@
+<div class="container">
+    <form #form='ngForm' (ngSubmit)="onSubmit(form)">
+      <div class="row mt-5">
+        <div class="col-sm-4">
+          <div class="">
+            <div class="col-sm-6">Origin</div>
+            <div class="col" id="origin">
+              <ejs-multiselect id='originName' name='originName' required #local='ngModel' [(value)]='origin' [(ngModel)]='origin'
+                               [dataSource]='airports' [fields]='localFields' [placeholder]='localWaterMark'></ejs-multiselect>
+
+              <div *ngIf="isOriginSelected" class="position-absolute alert alert-danger">
+                  Origin is required.
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="">
+            <div class="col-sm-6">destination</div>
+            <div class="col" id="destination">
+              <ejs-multiselect id='destinationName' name='destinationName' #local='ngModel' [(value)]='destination' [(ngModel)]='destination'
+                               [dataSource]='airports' [fields]='localFields' [placeholder]='localWaterMark'></ejs-multiselect>
+              <div *ngIf="isDestinationSelected" class="position-absolute alert alert-danger">
+                Destination is required.
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="">
+            <div class="col-sm-6">Sort Airports By</div>
+            <div class="col">
+              <a [routerLink]="" (click)="sortAirportData('code')">Country Code</a> Or <a [routerLink]="" (click)="sortAirportData('name')">Country Name</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-5">
+        <div class="col-sm-6 mt-3">
+          <button class="col btn btn-primary" type="submit">Get Fare</button>
+        </div>
+        <div class="col-md-6 mt-3">
+          <button class="col btn btn-success" [routerLink]="['/httpTrace']">Get HTTP Trace</button>
+        </div>
+      </div>
+    </form>
+</div>
+
+<ngx-spinner
+  bdOpacity = 0.9
+  bdColor = "#333"
+  size = "medium"
+  color = "#fff"
+  type = "ball-climbing-dot"
+  fullScreen = "false">
+  <p style="color: white" > Loading... </p>
+</ngx-spinner>
+<div class="container result">
+  <div class="row mt-10">
+    <div class="col-sm-12">
+      <div *ngIf="fare">
+        <table class="table">
+          <thead>
+          <tr>
+            <th scope="col">Amount</th>
+            <th scope="col">Currency</th>
+            <th scope="col">Origin</th>
+            <th scope="col">Destination</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>{{fare.amount}}</td>
+            <td>{{fare.currency}}</td>
+            <td>{{fare.origin}}</td>
+            <td>{{fare.destination}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+
+
